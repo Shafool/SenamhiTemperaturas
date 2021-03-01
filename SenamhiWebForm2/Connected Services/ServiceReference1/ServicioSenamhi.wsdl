@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Listarlugares">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarlugaresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarlugaresResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListaLocalidad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TNombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListaLocalidadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListaLocalidadResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListarlugaresSoapIn">
+    <wsdl:part name="parameters" element="tns:Listarlugares" />
+  </wsdl:message>
+  <wsdl:message name="ListarlugaresSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarlugaresResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListaLocalidadSoapIn">
+    <wsdl:part name="parameters" element="tns:ListaLocalidad" />
+  </wsdl:message>
+  <wsdl:message name="ListaLocalidadSoapOut">
+    <wsdl:part name="parameters" element="tns:ListaLocalidadResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioSenamhiSoap">
+    <wsdl:operation name="Listarlugares">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mostrar las por lugar</wsdl:documentation>
+      <wsdl:input message="tns:ListarlugaresSoapIn" />
+      <wsdl:output message="tns:ListarlugaresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaLocalidad">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listar x localidad</wsdl:documentation>
+      <wsdl:input message="tns:ListaLocalidadSoapIn" />
+      <wsdl:output message="tns:ListaLocalidadSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioSenamhiSoap" type="tns:ServicioSenamhiSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Listarlugares">
+      <soap:operation soapAction="http://tempuri.org/Listarlugares" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaLocalidad">
+      <soap:operation soapAction="http://tempuri.org/ListaLocalidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioSenamhiSoap12" type="tns:ServicioSenamhiSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Listarlugares">
+      <soap12:operation soapAction="http://tempuri.org/Listarlugares" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaLocalidad">
+      <soap12:operation soapAction="http://tempuri.org/ListaLocalidad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioSenamhi">
+    <wsdl:port name="ServicioSenamhiSoap" binding="tns:ServicioSenamhiSoap">
+      <soap:address location="https://localhost:44328/ServicioSenamhi.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioSenamhiSoap12" binding="tns:ServicioSenamhiSoap12">
+      <soap12:address location="https://localhost:44328/ServicioSenamhi.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
